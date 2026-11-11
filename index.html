@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko" class="kshell">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="robots" content="noindex, nofollow">
+<title>스윙블랙 검단점 터치스크린</title>
+<link rel="manifest" href="kiosk.webmanifest">
+<link rel="icon" type="image/png" href="assets/icons/icon-192.png">
+<link rel="preload" href="vendor/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/kiosk.css">
+</head>
+<body>
+<!--
+  세로 대형 터치스크린용 화면 (기준 1080 x 1920, 화면 크기에 맞춰 통째로 확대·축소된다).
+  구역 셋을 세로로 쌓는다: 가격판, 상담 사이트(index.html을 가로형으로), 이벤트 배너.
+  구역 순서와 문구는 관리자 페이지의 터치스크린 탭에서 바꾼다.
+  상담 사이트의 주소(iframe src)는 js/kiosk.js가 정한다: 이 파일이 kiosk.html이면 index.html, 터치스크린용 사이트의 index.html이면 app.html.
+-->
+<div class="kroot" id="kroot">
+  <section class="kz kz-prices" id="kzPrices" aria-label="가격판"></section>
+  <section class="kz kz-site" aria-label="상담 안내">
+    <iframe id="kzSite" title="스윙블랙 검단점 상담 안내" allow="autoplay; screen-wake-lock"></iframe>
+  </section>
+  <section class="kz kz-banner" id="kzBanner" aria-label="이벤트"></section>
+</div>
+
+<noscript>이 화면은 자바스크립트가 켜져 있어야 동작합니다.</noscript>
+
+<script src="js/pricing.js"></script>
+<script src="js/defaults.js"></script>
+<script src="js/store.js"></script>
+<script src="js/illust.js"></script>
+<script src="js/kiosk.js"></script>
+</body>
+</html>
