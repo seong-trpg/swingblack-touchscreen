@@ -1,5 +1,5 @@
 /*
- * 터치스크린(세로 대형 화면) 화면: 가격판, 상담 사이트(가로형 index.html), 이벤트 배너를 세로로 쌓는다.
+ * 터치스크린(세로 대형 화면) 화면: 위에서부터 띠 배너, 상담 사이트(가로형 index.html, 터치 영역), 가격표를 세로로 쌓는다.
  * - 금액은 모두 SBPricing.board()가 계산한 값을 그대로 보여 준다. 여기서 더하거나 나누지 않는다.
  * - 제목·문구·구역 순서는 설정(cfg.kiosk, cfg.promos, cfg.texts)에서 읽는다.
  * - 상담 사이트 안의 관리자 페이지에서 저장하면(storage 이벤트) 가격판과 배너도 바로 바뀐다.
@@ -55,8 +55,8 @@
 
   // ---------- 구역 순서 ----------
   function applyOrder() {
-    var order = String((cfg.kiosk && cfg.kiosk.order) || 'prices-site-banner').split('-');
-    if (order.length !== 3 || order.some(function (z) { return !ZONES[z]; })) order = ['prices', 'site', 'banner'];
+    var order = String((cfg.kiosk && cfg.kiosk.order) || 'banner-site-prices').split('-');
+    if (order.length !== 3 || order.some(function (z) { return !ZONES[z]; })) order = ['banner', 'site', 'prices'];
     order.forEach(function (z, i) {
       var el = $(ZONES[z]);
       (z === 'site' ? el.parentNode : el).style.order = i;
@@ -144,9 +144,9 @@
     }
     if (s.type === 'promo') {
       return '<div class="kb-slide kb-promo' + on + '"><div class="kb-in"><span class="kb-tag">진행 중인 이벤트</span>' +
-        '<h2>' + esc(s.text) + '</h2>' + (s.detail ? '<p>' + esc(s.detail) + '</p>' : '') +
-        (s.until ? '<span class="kb-until">' + s.until + '</span>' : '') + '</div>' +
-        '<div class="kb-mark"><b>' + esc(t.brand) + '</b> ' + esc(t.branch) + '</div></div>';
+        '<h2>' + esc(s.text) + '</h2>' + (s.detail ? '<p>' + esc(s.detail) + '</p>' : '') + '</div>' +
+        '<div class="kb-side">' + (s.until ? '<span class="kb-until">' + s.until + '</span>' : '') +
+        '<span class="kb-mark"><b>' + esc(t.brand) + '</b> ' + esc(t.branch) + '</span></div></div>';
     }
     var trust = (t.trust || []).filter(function (x) { return x.on !== false; });
     return '<div class="kb-slide kb-brand' + on + '"><div class="kb-in"><span class="kb-sub">' + esc(t.slogan1) + '</span>' +

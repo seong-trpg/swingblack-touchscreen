@@ -186,8 +186,8 @@
   }
 
   // ---------- 탭: 터치스크린 (세로 대형 화면, kiosk.html) ----------
-  var ZONE_NAMES = { prices: '가격판', site: '상담 사이트', banner: '이벤트 배너' };
-  var ZONE_ORDERS = ['prices-site-banner', 'banner-site-prices', 'site-banner-prices', 'site-prices-banner', 'prices-banner-site', 'banner-prices-site'];
+  var ZONE_NAMES = { prices: '가격표', site: '상담 사이트(터치 영역)', banner: '띠 배너' };
+  var ZONE_ORDERS = ['banner-site-prices', 'prices-site-banner', 'site-banner-prices', 'site-prices-banner', 'prices-banner-site', 'banner-prices-site'];
   function orderLabel(o) {
     return o.split('-').map(function (z) { return ZONE_NAMES[z]; }).join(' → ');
   }
@@ -199,12 +199,12 @@
       ZONE_ORDERS.map(function (o) {
         return '<option value="' + o + '"' + (o === cur ? ' selected' : '') + '>' + orderLabel(o) + '</option>';
       }).join('') + '</select>' +
-      '<small>손으로 누르는 상담 사이트는 바닥에서 1.0~1.4m 높이에 오는 자리에 두세요.</small></label></section>' +
-      '<section class="ad-group"><h3>가격판</h3>' +
+      '<small>구역 높이는 띠 배너, 상담 사이트, 가격표가 각각 정해져 있습니다. 순서를 바꾸면 손으로 누르는 상담 사이트의 높이가 달라집니다.</small></label></section>' +
+      '<section class="ad-group"><h3>가격표</h3>' +
       field('제목', 'kiosk/boardTitle') + field('안내 문구', 'kiosk/boardNote') +
-      toggle('할인 기간에 가격판에도 할인가 보이기', 'kiosk/boardSale') +
-      '<p class="ad-help">꺼 두면 가격판에는 항상 원가만 보입니다. 켜면 할인·홍보 탭의 할인 적용 버튼이 켜져 있는 기간에, 할인가를 넣은 항목만 할인가로 보입니다.</p></section>' +
-      '<section class="ad-group"><h3>이벤트 배너</h3>' +
+      toggle('할인 기간에 가격표에도 할인가 보이기', 'kiosk/boardSale') +
+      '<p class="ad-help">꺼 두면 가격표에는 항상 원가만 보입니다. 켜면 할인·홍보 탭의 할인 적용 버튼이 켜져 있는 기간에, 할인가를 넣은 항목만 할인가로 보입니다.</p></section>' +
+      '<section class="ad-group"><h3>띠 배너</h3>' +
       '<p class="ad-help">배너 그림 파일(이미지 상태 탭의 터치스크린 배너)이 있으면 그 그림을, 없으면 할인·홍보 탭에서 켠 홍보 문구를 보여 줍니다. 둘 다 없으면 아래 기본 문구가 나옵니다.</p>' +
       field('이벤트가 없을 때 보이는 문구', 'kiosk/bannerCall') +
       field('배너가 넘어가는 시간 (초)', 'kiosk/bannerSec', { type: 'num' }) + '</section>';

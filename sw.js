@@ -3,7 +3,7 @@
  * 앱 파일을 고치면 아래 VERSION을 올린다. 올리지 않으면 태블릿이 예전 화면을 보여 줄 수 있다.
  * 온라인일 때는 새 파일을 먼저 받고, 인터넷이 끊기면 저장해 둔 파일로 동작한다.
  */
-const VERSION = 'swingblack-v21';
+const VERSION = 'swingblack-v22';
 // 캐시 이름에 이 사이트의 주소를 붙인다. 탭용과 터치스크린용 사이트가 같은 github.io 주소 아래에 있어
 // 저장 공간을 함께 쓰므로, 서로의 저장분을 지우지 않게 하기 위함이다.
 const SITE = '|' + self.registration.scope;

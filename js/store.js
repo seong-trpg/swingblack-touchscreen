@@ -92,6 +92,11 @@
       var oldFacilityMent = '더스윙블랙은 일곱 가지를 약속드립니다. 넓은 1인 타석부터 최상의 서비스까지, 천천히 살펴보세요.';
       if (cfg.ments && cfg.ments.facility === oldFacilityMent) cfg.ments.facility = base.ments.facility;
     }
+    if (from < 9) {
+      // v9 (2026-11-11): 터치스크린 구역 순서의 초기값을 띠 배너 → 터치 영역 → 가격표로 바꿨다.
+      // 예전 초기값 그대로인 경우만 바꾸고, 직원이 다른 순서로 고친 값은 그대로 둔다.
+      if (cfg.kiosk && cfg.kiosk.order === 'prices-site-banner') cfg.kiosk.order = base.kiosk.order;
+    }
     cfg.schema = base.schema;
     return cfg;
   }
@@ -139,8 +144,8 @@
       'texts.promises': '약속 문구', 'texts.trust': '신뢰 지표', 'texts.terms': '이용약관 원문',
       'texts.slogan1': '홈 슬로건 1', 'texts.slogan2': '홈 슬로건 2', 'texts.pledge': '다짐 문구',
       'texts.builderTagline': '이용권 설계 문구', 'texts.brand': '브랜드명', 'texts.branch': '지점명',
-      'kiosk.order': '터치스크린 구역 순서', 'kiosk.boardTitle': '터치스크린 가격판 제목',
-      'kiosk.boardNote': '터치스크린 가격판 안내 문구', 'kiosk.boardSale': '터치스크린 가격판 할인가 표시',
+      'kiosk.order': '터치스크린 구역 순서', 'kiosk.boardTitle': '터치스크린 가격표 제목',
+      'kiosk.boardNote': '터치스크린 가격표 안내 문구', 'kiosk.boardSale': '터치스크린 가격표 할인가 표시',
       'kiosk.bannerCall': '터치스크린 배너 기본 문구', 'kiosk.bannerSec': '터치스크린 배너 넘김 시간(초)',
       'settings.voiceOn': 'AI 보이스 기본값', 'settings.sfxOn': '효과음 기본값',
       'settings.voiceRate': '음성 속도', 'settings.idleSec': '무조작 초기화 시간(초)'

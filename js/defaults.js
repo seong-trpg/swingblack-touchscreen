@@ -8,7 +8,7 @@
   function defaults() {
     var pricing = root.SBPricing.defaultPricing();
     return {
-      schema: 8,
+      schema: 9,
       items: pricing.items,
       validity: pricing.validity,
       couponMonths: pricing.couponMonths,
@@ -156,12 +156,12 @@
 
       /*
        * 터치스크린(세로 대형 화면, kiosk.html) 전용 설정. 태블릿 화면에는 쓰이지 않는다.
-       * order: 위에서부터 구역 순서. prices=가격판, site=상담 사이트(가로형), banner=이벤트 배너.
-       *   2026-11-11 기준 화면 아래 끝이 바닥에서 670mm라, 손으로 누르는 상담 사이트를 가운데(약 1.0~1.4m)에 둔다.
+       * order: 위에서부터 구역 순서. banner=띠 배너, site=상담 사이트(가로형, 터치 영역), prices=가격표.
+       *   2026-11-11 사용자 결정: 터치 영역이 너무 낮아 위로 올렸다. 위에 띠 배너, 그다음 터치 영역, 아래에 가격표.
        * boardSale: 가격판에 할인가를 보여 줄지. 꺼져 있으면 가격판은 항상 원가만 보인다(태블릿의 할인 적용 버튼과 같은 원칙).
        */
       kiosk: {
-        order: 'prices-site-banner',
+        order: 'banner-site-prices',
         boardTitle: '멤버십 가격',
         boardNote: '가격을 누르면 그 구성의 견적이 상담 화면에 열립니다',
         boardSale: false,
